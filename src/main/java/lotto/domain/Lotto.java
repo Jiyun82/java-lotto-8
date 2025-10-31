@@ -21,5 +21,11 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.NOT_SIX_LOTTO_NUMBERS);
         }
+
+        for(int n : numbers) {
+            if(n < 1 || n > 45) {
+                throw new IllegalArgumentException(ErrorMessage.OUT_OF_RANGE);
+            }
+        }
     }
 }
