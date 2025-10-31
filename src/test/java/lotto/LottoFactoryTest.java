@@ -16,7 +16,7 @@ public class LottoFactoryTest {
 
     @Test
     @DisplayName("주어진 갯수만큼 로또를 생성한다.")
-    void shouldCreateCorrectNumberOfLottos() {
+    void createLottos_shouldCreateCorrectNumberOfLottos() {
         int count = 5;
 
         LottoFactory lottoFactory = new LottoFactory();
@@ -27,7 +27,7 @@ public class LottoFactoryTest {
 
     @Test
     @DisplayName("로또의 번호는 중복 없이 6개여야 한다.")
-    void shouldHaveSixUniqueNumbers() {
+    void createLottos_shouldHaveSixUniqueNumbers() {
         int count = 1;
 
         LottoFactory lottoFactory = new LottoFactory();
@@ -44,7 +44,7 @@ public class LottoFactoryTest {
 
     @Test
     @DisplayName("로또의 번호는 1~45 범위를 벗어나지 않아야 한다.")
-    void shouldHaveNumbersWithinRange() {
+    void createLottos_shouldHaveNumbersWithinRange() {
         int count = 1;
 
         LottoFactory lottoFactory = new LottoFactory();

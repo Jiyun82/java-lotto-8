@@ -15,7 +15,7 @@ public class InputValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"abc", "0", "-14000"})
     @DisplayName("입력값이 양의 정수가 아니면 예외를 던진다.")
-    void shouldThrowExceptionWhenInputIsNotNumber(String input) {
+    void validatePurchaseAmount_shouldThrowExceptionWhenInputIsNotNumber(String input) {
 
         assertThatThrownBy(() -> InputValidator.validatePurchaseAmount(input))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -24,7 +24,7 @@ public class InputValidatorTest {
 
     @Test
     @DisplayName("입력값이 1000원 단위가 아니면 예외를 던진다.")
-    void shouldThrowExceptionWhenAmountIsNotMultipleOfThousand() {
+    void validatePurchaseAmount_shouldThrowExceptionWhenAmountIsNotMultipleOfThousand() {
         String input = "123456";
 
         assertThatThrownBy(() -> InputValidator.validatePurchaseAmount(input))
@@ -34,7 +34,7 @@ public class InputValidatorTest {
 
     @Test
     @DisplayName("입력값이 유효하면 예외를 던지지 않는다.")
-    void shouldNotThrowExceptionWhenAmountIsValid() {
+    void validatePurchaseAmount_shouldNotThrowExceptionWhenAmountIsValid() {
         String input = "14000";
 
         assertDoesNotThrow(() -> InputValidator.validatePurchaseAmount(input));
