@@ -1,12 +1,14 @@
 package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import lotto.domain.Lotto;
 import lotto.domain.LottoFactory;
+import lotto.util.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -56,5 +58,30 @@ public class LottoFactoryTest {
             assertThat(numbers).allMatch(n -> n >= 1 && n <= 45);
         }
     }
+
+    @Test
+    @DisplayName("로또의 번호가 6개가 아니라면 예외를 던진다.")
+    void createLotto_shouldThrowExceptionWhenNumberCountIsNotSix() {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+
+        LottoFactory lottoFactory = new LottoFactory();
+
+        assertThatThrownBy(() -> lottoFactory.createLotto(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.NOT_SIX_LOTTO_NUMBERS);
+    }
+
+    @Test
+    @DisplayName("로또의 번호가 1~45 범위를 벗어난다면 예외를 던진다.")
+    void createLotto_shouldThrowExceptionWhenNumberOutOfRange() {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 46);
+
+        LottoFactory lottoFactory = new LottoFactory();
+
+        assertThatThrownBy(() -> lottoFactory.createLotto(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.OUT_OF_RANGE);
+    }
+
 
 }
