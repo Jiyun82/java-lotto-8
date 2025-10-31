@@ -16,5 +16,7 @@ public class Application {
 
         OutputView outputView = new OutputView();
         outputView.printLottos(lottos);
+
+        List<Integer> winningNumbers = inputView.inputWinningNumbers();
     }
 }

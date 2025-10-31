@@ -1,9 +1,11 @@
 package lotto.util;
 
+import java.util.List;
+
 public class InputValidator {
 
     public static void validatePurchaseAmount(String input) {
-        if(!isNumeric(input)) {
+        if(!isPositiveInteger(input)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_POSITIVE_INTEGER);
         }
         if(!isMultipleOfThousand(Integer.parseInt(input))) {
@@ -11,12 +13,25 @@ public class InputValidator {
         }
     }
 
-    private static boolean isNumeric(String input) {
+    public static void validateWinningNumbers(String input) {
+        List<String> parts = List.of(input.split(","));
+        for (String part : parts) {
+            if (!isInteger(part)) {
+                throw new IllegalArgumentException(ErrorMessage.NOT_INTEGER);
+            }
+        }
+    }
+
+    private static boolean isPositiveInteger(String input) {
         return input.matches("[1-9]\\d*");
     }
 
     private static boolean isMultipleOfThousand(int input) {
         return input % 1000 == 0;
+    }
+
+    private static boolean isInteger(String input) {
+        return input.matches("-?\\d+");
     }
 
 }
