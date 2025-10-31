@@ -18,5 +18,6 @@ public class Application {
         outputView.printLottos(lottos);
 
         List<Integer> winningNumbers = inputView.inputWinningNumbers();
+        int bonusNumber = inputView.inputBonusNumber();
     }
 }

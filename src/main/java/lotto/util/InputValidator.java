@@ -22,6 +22,12 @@ public class InputValidator {
         }
     }
 
+    public static void validateBonusNumber(String input) {
+        if(!isInteger(input)) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_INTEGER);
+        }
+    }
+
     private static boolean isPositiveInteger(String input) {
         return input.matches("[1-9]\\d*");
     }
