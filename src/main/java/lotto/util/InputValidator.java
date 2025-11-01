@@ -16,7 +16,7 @@ public class InputValidator {
     public static void validateWinningNumbers(String input) {
         List<String> parts = List.of(input.split(","));
         for (String part : parts) {
-            if (!isInteger(part)) {
+            if (!isInteger(part.trim())) {
                 throw new IllegalArgumentException(ErrorMessage.NOT_INTEGER);
             }
         }
