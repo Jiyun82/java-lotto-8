@@ -56,6 +56,11 @@ public class WinningCheckerTest {
                         new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6))),
                         winningLotto,
                         WinningType.SIX_MATCH
+                ),
+                arguments(
+                        new Lotto(new ArrayList<>(List.of(10, 11, 12, 13, 14, 15))),
+                        winningLotto,
+                        null
                 )
         );
     }
