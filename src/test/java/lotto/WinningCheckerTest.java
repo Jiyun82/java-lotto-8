@@ -27,30 +27,34 @@ public class WinningCheckerTest {
     }
 
     static Stream<Arguments> winningTypeProvider() {
+        Lotto lotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        int bonusNumber = 7;
+        WinningLotto winningLotto = new WinningLotto(lotto, bonusNumber);
+
         return Stream.of(
                 arguments(
                         new Lotto(new ArrayList<>(List.of(1, 2, 3, 7, 8, 9))),
-                        new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 10),
+                        winningLotto,
                         WinningType.THREE_MATCH
                 ),
                 arguments(
                         new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 8, 9))),
-                        new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 10),
+                        winningLotto,
                         WinningType.FOUR_MATCH
                 ),
                 arguments(
                         new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 9))),
-                        new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 10),
+                        winningLotto,
                         WinningType.FIVE_MATCH
                 ),
                 arguments(
-                        new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 10))),
-                        new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 10),
+                        new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 7))),
+                        winningLotto,
                         WinningType.FIVE_BONUS
                 ),
                 arguments(
                         new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6))),
-                        new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 10),
+                        winningLotto,
                         WinningType.SIX_MATCH
                 )
         );
