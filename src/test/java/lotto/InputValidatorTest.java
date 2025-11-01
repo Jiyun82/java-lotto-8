@@ -40,4 +40,40 @@ public class InputValidatorTest {
         assertDoesNotThrow(() -> InputValidator.validatePurchaseAmount(input));
     }
 
+    @Test
+    @DisplayName("입력값이 정수로 이루어져있지 않으면 예외를 던진다.")
+    void validateWinningNumbers_shouldThrowExceptionWhenInputIsNotInteger() {
+        String input = "1, 2, 3, 4, 5, a";
+
+        assertThatThrownBy(() -> InputValidator.validateWinningNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.NOT_INTEGER);
+    }
+
+    @Test
+    @DisplayName("입력값이 유효하면 예외를 던지지 않는다.")
+    void validateWinningNumbers_shouldNotThrowExceptionWhenInputIsValid() {
+        String input = "1, 2, 3, 4, 5, 6";
+
+        assertDoesNotThrow(() -> InputValidator.validateWinningNumbers(input));
+    }
+
+    @Test
+    @DisplayName("입력값이 정수가 아니라면 예외를 던진다.")
+    void validateBonusNumber_shouldThrowExceptionWhenInputIsNotInteger() {
+        String input = "h";
+
+        assertThatThrownBy(() -> InputValidator.validateBonusNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.NOT_INTEGER);
+    }
+
+    @Test
+    @DisplayName("입력값이 유효하면 예외를 던지지 않는다.")
+    void validateBonusNumber_shouldNotThrowExceptionWhenInputIsValid() {
+        String input = "7";
+
+        assertDoesNotThrow(() -> InputValidator.validateBonusNumber(input));
+    }
+
 }
