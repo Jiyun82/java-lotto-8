@@ -9,15 +9,17 @@ import lotto.view.OutputView;
 public class Application {
     public static void main(String[] args) {
         InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
+        LottoService lottoService = new LottoService();
+
         int purchaseAmount = inputView.inputPurchaseAmount();
 
-        LottoService lottoService = new LottoService();
         List<Lotto> lottos = lottoService.purchaseLottos(purchaseAmount);
 
-        OutputView outputView = new OutputView();
         outputView.printLottos(lottos);
 
         List<Integer> winningNumbers = inputView.inputWinningNumbers();
         int bonusNumber = inputView.inputBonusNumber();
+        lottoService.createWinningLotto(winningNumbers, bonusNumber);
     }
 }
