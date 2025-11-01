@@ -74,7 +74,7 @@ public class LottoFactoryTest {
     @Test
     @DisplayName("로또의 번호가 6개가 아니라면 예외를 던진다.")
     void createLotto_shouldThrowExceptionWhenNumberCountIsNotSix() {
-        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5));
 
         LottoFactory lottoFactory = new LottoFactory();
 
@@ -86,7 +86,7 @@ public class LottoFactoryTest {
     @Test
     @DisplayName("로또의 번호가 1~45 범위를 벗어난다면 예외를 던진다.")
     void createLotto_shouldThrowExceptionWhenNumberOutOfRange() {
-        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 46);
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 46));
 
         LottoFactory lottoFactory = new LottoFactory();
 
