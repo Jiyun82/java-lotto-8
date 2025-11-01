@@ -14,4 +14,8 @@ public class LottoFactory {
         return lottos;
     }
 
+    public Lotto createLotto(List<Integer> numbers) {
+        return new Lotto(numbers);
+    }
+
 }
