@@ -49,5 +49,19 @@ public class WinningLottoFactoryTest {
                 .hasMessageContaining(ErrorMessage.OUT_OF_RANGE);
     }
 
+    @Test
+    @DisplayName("당첨 번호와 보너스 번호가 중복될 경우 예외를 던진다.")
+    void createWinningLotto_shouldThrowExceptionWhenWinningAndBonusNumbersConflict() {
+        List<Integer> winningNumbers = new ArrayList<>(List.of(2, 10, 16, 22, 30, 43));
+        int bonusNumber = 10;
+
+        LottoFactory lottoFactory = new LottoFactory();
+        Lotto lotto = lottoFactory.createLotto(winningNumbers);
+        WinningLottoFactory winningLottoFactory = new WinningLottoFactory();
+
+        assertThatThrownBy(() -> winningLottoFactory.createWinningLotto(lotto, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.DUPLICATE_WINNING_AND_BONUS_NUMBER);
+    }
 
 }

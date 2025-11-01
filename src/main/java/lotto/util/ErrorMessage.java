@@ -14,4 +14,6 @@ public class ErrorMessage {
 
     public static final String OUT_OF_RANGE = ERROR_PREFIX + "로또 번호의 숫자 범위는 1~45까지 입니다.";
 
+    public static final String DUPLICATE_WINNING_AND_BONUS_NUMBER = ERROR_PREFIX + "당첨 번호와 보너스 번호는 중복될 수 없습니다.";
+
 }
