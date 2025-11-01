@@ -3,6 +3,7 @@ package lotto;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -57,6 +58,17 @@ public class LottoFactoryTest {
 
             assertThat(numbers).allMatch(n -> n >= 1 && n <= 45);
         }
+    }
+
+    @Test
+    @DisplayName("입력 받은 번호로 로또를 생성한다.")
+    void createLotto_shouldCreateLottoWhenInputIsValid() {
+        List<Integer> numbers = new ArrayList<>(List.of(10, 15, 20, 25, 30, 35));
+
+        LottoFactory lottoFactory = new LottoFactory();
+        Lotto lotto = lottoFactory.createLotto(numbers);
+
+        assertThat(lotto.getNumbers()).isEqualTo(numbers);
     }
 
     @Test
