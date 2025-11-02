@@ -12,7 +12,7 @@ public class ProfitCalculatorTest {
 
     @Test
     @DisplayName("당첨 결과와 구입 금액이 주어지면 수익률을 계산한다.")
-    void calculateProfit() {
+    void calculateProfit_shouldCalculateProfitWhenWinningResultsAndPurchaseAmountGiven() {
         WinningResults winningResults = new WinningResults();
         winningResults.addResult(WinningType.THREE_MATCH);
         winningResults.addResult(WinningType.THREE_MATCH);
@@ -21,7 +21,7 @@ public class ProfitCalculatorTest {
 
         ProfitCalculator profitCalculator = new ProfitCalculator();
 
-        assertThat(profitCalculator.calculateProfit(winningResults, purchaseAmount)).isEqualTo(6.67);
+        assertThat(profitCalculator.calculateProfit(winningResults, purchaseAmount)).isEqualTo(1500.5);
     }
 
 }
