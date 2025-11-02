@@ -21,7 +21,7 @@ public class ProfitCalculatorTest {
 
         ProfitCalculator profitCalculator = new ProfitCalculator();
 
-        assertThat(profitCalculator.calculateProfit(winningResults, purchaseAmount)).isEqualTo(1500.5);
+        assertThat(profitCalculator.calculateProfit(winningResults, purchaseAmount)).isEqualTo(150050);
     }
 
 }
