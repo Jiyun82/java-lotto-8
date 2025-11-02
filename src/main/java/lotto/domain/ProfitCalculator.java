@@ -5,7 +5,7 @@ public class ProfitCalculator {
     public double calculateProfit(WinningResults results, int purchaseAmount) {
         long earnings = calculateEarnings(results);
 
-        return Math.round(((double) earnings / purchaseAmount) * 100) / 100.0;
+        return Math.round(((double) earnings / purchaseAmount) * 1000) / 10.0;
     }
 
     private long calculateEarnings(WinningResults results) {
