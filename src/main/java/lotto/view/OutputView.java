@@ -17,7 +17,7 @@ public class OutputView {
     public void printWinningResult(WinningResults winningResults, double profit) {
         System.out.println("당첨 통계\n---");
         System.out.println(winningResults);
-        System.out.println("총 수익률은 " + profit + "% 입니다.");
+        System.out.println("총 수익률은 " + profit + "%입니다.");
     }
 
 }
