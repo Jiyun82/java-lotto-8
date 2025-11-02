@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinningResults {
 
@@ -42,6 +43,12 @@ public class WinningResults {
                 .map(WinningResult::getCount)
                 .findFirst()
                 .orElse(null);
+    }
+
+    public String toString() {
+        return results.stream()
+                .map(Object::toString)
+                .collect(Collectors.joining("\n"));
     }
 
 }

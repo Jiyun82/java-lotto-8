@@ -22,4 +22,8 @@ public class WinningResult {
     public int getCount() {
         return count;
     }
+
+    public String toString() {
+        return winningType + "" + count + "개";
+    }
 }
