@@ -6,9 +6,11 @@ import lotto.domain.ProfitCalculator;
 import lotto.domain.WinningResults;
 import lotto.domain.WinningType;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class ProfitCalculatorTest {
 
+    @Test
     @DisplayName("당첨 결과와 구입 금액이 주어지면 수익률을 계산한다.")
     void calculateProfit() {
         WinningResults winningResults = new WinningResults();
