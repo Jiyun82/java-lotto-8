@@ -5,11 +5,8 @@ import java.util.List;
 public class InputValidator {
 
     public static void validatePurchaseAmount(String input) {
-        if(!isPositiveInteger(input)) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_POSITIVE_INTEGER);
-        }
-        if(!isMultipleOfThousand(Integer.parseInt(input))) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_MULTIPLE_OF_THOUSAND);
+        if(!isInteger(input)) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_INTEGER);
         }
     }
 
@@ -26,14 +23,6 @@ public class InputValidator {
         if(!isInteger(input)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_INTEGER);
         }
-    }
-
-    private static boolean isPositiveInteger(String input) {
-        return input.matches("[1-9]\\d*");
-    }
-
-    private static boolean isMultipleOfThousand(int input) {
-        return input % 1000 == 0;
     }
 
     private static boolean isInteger(String input) {
