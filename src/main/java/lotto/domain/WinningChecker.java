@@ -17,18 +17,7 @@ public class WinningChecker {
         int matchCount = countMatchingNumbers(lotto.getNumbers(), winningLotto.getWinningNumbers());
         boolean bonusMatched = isBonusMatched(lotto.getNumbers(), winningLotto.getBonusNumber());
 
-        if (matchCount == 3) {
-            return WinningType.THREE_MATCH;
-        } else if (matchCount == 4) {
-            return WinningType.FOUR_MATCH;
-        } else if (matchCount == 5 && !bonusMatched) {
-            return WinningType.FIVE_MATCH;
-        } else if (matchCount == 5 && bonusMatched) {
-            return WinningType.FIVE_BONUS;
-        } else if (matchCount == 6) {
-            return WinningType.SIX_MATCH;
-        }
-        return null;
+        return WinningType.from(matchCount, bonusMatched);
     }
 
     private int countMatchingNumbers(List<Integer> numbers, List<Integer> winningNumbers) {

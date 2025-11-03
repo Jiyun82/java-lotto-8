@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
+
 public enum WinningType {
 
     THREE_MATCH(3, false, 5000),
@@ -29,6 +31,13 @@ public enum WinningType {
 
     public int getPrize() {
         return prize;
+    }
+
+    public static WinningType from(int matchCount, boolean bonusMatched) {
+        return Arrays.stream(values())
+                .filter(type -> type.matchCount == matchCount && type.bonusMatched == bonusMatched)
+                .findFirst()
+                .orElse(null);
     }
 
 }
