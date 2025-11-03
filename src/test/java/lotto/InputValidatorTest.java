@@ -12,36 +12,25 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class InputValidatorTest {
 
+    @Test
+    @DisplayName("입력값(구입 금액)이 정수가 아니면 예외를 던진다.")
+    void validatePurchaseAmount_shouldThrowExceptionWhenInputIsNotInteger() {
+        String input = "abc";
+
+        assertThatThrownBy(() -> InputValidator.validatePurchaseAmount(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.NOT_INTEGER);
+    }
+
     @ParameterizedTest
-    @ValueSource(strings = {"abc", "0", "-14000"})
-    @DisplayName("입력값이 양의 정수가 아니면 예외를 던진다.")
-    void validatePurchaseAmount_shouldThrowExceptionWhenInputIsNotNumber(String input) {
-
-        assertThatThrownBy(() -> InputValidator.validatePurchaseAmount(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorMessage.NOT_POSITIVE_INTEGER);
-    }
-
-    @Test
-    @DisplayName("입력값이 1000원 단위가 아니면 예외를 던진다.")
-    void validatePurchaseAmount_shouldThrowExceptionWhenAmountIsNotMultipleOfThousand() {
-        String input = "123456";
-
-        assertThatThrownBy(() -> InputValidator.validatePurchaseAmount(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorMessage.NOT_MULTIPLE_OF_THOUSAND);
-    }
-
-    @Test
-    @DisplayName("입력값이 유효하면 예외를 던지지 않는다.")
-    void validatePurchaseAmount_shouldNotThrowExceptionWhenAmountIsValid() {
-        String input = "14000";
-
+    @ValueSource(strings = {"0", "10000", "-1000"})
+    @DisplayName("입력값(구입 금액)이 정수라면 예외를 던지지 않는다.")
+    void validatePurchaseAmount_shouldNotThrowExceptionWhenAmountIsInteger(String input) {
         assertDoesNotThrow(() -> InputValidator.validatePurchaseAmount(input));
     }
 
     @Test
-    @DisplayName("입력값이 정수로 이루어져있지 않으면 예외를 던진다.")
+    @DisplayName("입력값(당첨 번호)이 정수로 이루어져있지 않으면 예외를 던진다.")
     void validateWinningNumbers_shouldThrowExceptionWhenInputIsNotInteger() {
         String input = "1, 2, 3, 4, 5, a";
 
@@ -51,7 +40,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    @DisplayName("입력값이 유효하면 예외를 던지지 않는다.")
+    @DisplayName("입력값(당첨 번호)이 유효하면 예외를 던지지 않는다.")
     void validateWinningNumbers_shouldNotThrowExceptionWhenInputIsValid() {
         String input = "1, 2, 3, 4, 5, 6";
 
@@ -59,7 +48,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    @DisplayName("입력값이 정수가 아니라면 예외를 던진다.")
+    @DisplayName("입력값(보너스 번호)이 정수가 아니라면 예외를 던진다.")
     void validateBonusNumber_shouldThrowExceptionWhenInputIsNotInteger() {
         String input = "h";
 
@@ -69,7 +58,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    @DisplayName("입력값이 유효하면 예외를 던지지 않는다.")
+    @DisplayName("입력값(보너스 번호)이 유효하면 예외를 던지지 않는다.")
     void validateBonusNumber_shouldNotThrowExceptionWhenInputIsValid() {
         String input = "7";
 
