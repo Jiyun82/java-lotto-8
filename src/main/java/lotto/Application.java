@@ -12,25 +12,30 @@ import lotto.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
-        LottoService lottoService = new LottoService();
-        WinningChecker winningChecker = new WinningChecker();
-        ProfitCalculator profitCalculator = new ProfitCalculator();
+        try {
+            InputView inputView = new InputView();
+            OutputView outputView = new OutputView();
+            LottoService lottoService = new LottoService();
+            WinningChecker winningChecker = new WinningChecker();
+            ProfitCalculator profitCalculator = new ProfitCalculator();
 
-        int purchaseAmount = inputView.inputPurchaseAmount();
+            int purchaseAmount = inputView.inputPurchaseAmount();
 
-        List<Lotto> lottos = lottoService.purchaseLottos(purchaseAmount);
+            List<Lotto> lottos = lottoService.purchaseLottos(purchaseAmount);
 
-        outputView.printLottos(lottos);
+            outputView.printLottos(lottos);
 
-        List<Integer> winningNumbers = inputView.inputWinningNumbers();
-        int bonusNumber = inputView.inputBonusNumber();
-        WinningLotto winningLotto = lottoService.createWinningLotto(winningNumbers, bonusNumber);
+            List<Integer> winningNumbers = inputView.inputWinningNumbers();
+            int bonusNumber = inputView.inputBonusNumber();
+            WinningLotto winningLotto = lottoService.createWinningLotto(winningNumbers, bonusNumber);
 
-        WinningResults winningResults = winningChecker.calculateWinningResults(lottos, winningLotto);
-        double profit = profitCalculator.calculateProfit(winningResults, purchaseAmount);
+            WinningResults winningResults = winningChecker.calculateWinningResults(lottos, winningLotto);
+            double profit = profitCalculator.calculateProfit(winningResults, purchaseAmount);
 
-        outputView.printWinningResult(winningResults, profit);
+            outputView.printWinningResult(winningResults, profit);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
