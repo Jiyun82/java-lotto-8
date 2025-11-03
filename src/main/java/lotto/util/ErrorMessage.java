@@ -16,4 +16,6 @@ public class ErrorMessage {
 
     public static final String DUPLICATE_WINNING_AND_BONUS_NUMBER = ERROR_PREFIX + "당첨 번호와 보너스 번호는 중복될 수 없습니다.";
 
+    public static final String NOT_UNIQUE_NUMBERS = ERROR_PREFIX + "로또 번호는 중복이 없어야 합니다.";
+
 }
